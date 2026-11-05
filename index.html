@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hard Brain Puzzle & Cash Rewards | Rohan Gaming Zone</title>
 
-    <!-- Propeller & Afders Scripts -->
-    <script data-cfasync="false" src="https://bicea.org/14/79956d038d4c29f51dec7d393a3334e7"></script>
-    <script data-cfasync="false" src="https://afders.org/1/673f83c2f8b777bfed9d8707e0d9bfac"></script>
-    <script async="async" data-cfasync="false" src="https://bicea.org/21/2703db80831d2633275d1513ccd71abb"></script>
-
     <style>
         * {
             margin: 0;
@@ -33,7 +28,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(15, 8, 4, 0.88);
+            background: rgba(15, 8, 4, 0.85);
             z-index: 0;
         }
 
@@ -97,39 +92,22 @@
             gap: 15px;
         }
 
-        /* Responsive Ad Slot Container */
-        .ad-slot-card {
+        /* Clean Ad Banner Box */
+        .ad-banner-box {
             width: 100%;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.5);
             border: 1px dashed #b47a3e;
             border-radius: 12px;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 80px;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .ad-click-banner {
-            width: 100%;
-            background: linear-gradient(135deg, #1e293b, #0f172a);
-            border: 2px solid #38bdf8;
-            border-radius: 12px;
             padding: 12px;
-            color: #38bdf8;
-            font-weight: bold;
-            font-size: 0.9rem;
+            text-align: center;
+            color: #cbd5e1;
+            font-size: 0.85rem;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-            transition: transform 0.2s;
-            margin-top: 8px;
+            transition: background 0.2s;
         }
 
-        .ad-click-banner:hover {
-            transform: scale(1.02);
+        .ad-banner-box:hover {
+            background: rgba(180, 122, 62, 0.2);
         }
 
         .game-card {
@@ -280,21 +258,9 @@
 
     <div class="main-container">
 
-        <!-- Top Ad Container Slot 1 (Iframe Script) -->
-        <div class="ad-slot-card">
-            <script>
-              atOptions = {
-                'key' : 'cf070fd3a42605261afa0ca48335e9e8',
-                'format' : 'iframe',
-                'height' : 60,
-                'width' : 468,
-                'params' : {}
-              };
-            </script>
-            <script src="https://bicea.org/22/cf070fd3a42605261afa0ca48335e9e8"></script>
-            <div class="ad-click-banner" onclick="triggerAd()">
-                🎁 Yahan Click Karke Daily Reward Claim Karein!
-            </div>
+        <!-- Top Clickable Ad Banner -->
+        <div class="ad-banner-box" onclick="triggerAd()">
+            📢 <b>Sponsored Ad:</b> Yahan click karke bonus reward claim karein!
         </div>
 
         <div class="game-card">
@@ -305,17 +271,13 @@
             <button class="action-btn" onclick="shufflePuzzle()">Shuffle / Naya Game</button>
         </div>
 
-        <!-- Bottom Ad Container Slot 2 (Container Div Script) -->
-        <div class="ad-slot-card">
-            <div id="container-2703db80831d2633275d1513ccd71abb"></div>
-            <div class="ad-click-banner" onclick="triggerAd()">
-                🔥 Special Offer: Free Cash Bonus ke liye Click Karein!
-            </div>
+        <!-- Bottom Clickable Ad Banner -->
+        <div class="ad-banner-box" onclick="triggerAd()">
+            🔥 <b>Special Offer:</b> Exclusive gaming rewards ke liye yahan click karein!
         </div>
 
     </div>
 
-    <!-- Withdraw Modal -->
     <div class="modal-overlay" id="withdrawModal">
         <div class="modal-card">
             <h3>⚠️ Withdrawal Failed</h3>
@@ -381,7 +343,6 @@
 
                 renderPuzzle();
 
-                // Auto Ad trigger on every 5 moves
                 if (moveCount % 5 === 0) {
                     triggerAd();
                 }
