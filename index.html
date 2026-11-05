@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rohan Gaming Zone | Mini Games Hub</title>
+    <title>Rohan Gaming Zone | Play & Watch Ads</title>
 
     <!-- Propeller / Ad Network Scripts -->
     <script data-cfasync="false" src="https://bicea.org/14/79956d038d4c29f51dec7d393a3334e7"></script>
@@ -48,7 +48,7 @@
             margin-top: 4px;
         }
 
-        /* Main Game Layout */
+        /* Main Container */
         .main-container {
             width: 100%;
             max-width: 800px;
@@ -57,33 +57,48 @@
             flex-direction: column;
             align-items: center;
             gap: 20px;
+            position: relative;
         }
 
-        /* Game Selector Tabs */
-        .game-tabs {
+        /* Ad Gate Overlay (Jab tak ad nahi dekhenge, game locked rahega) */
+        #adGateModal {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
             display: flex;
-            gap: 10px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            border-radius: 16px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .ad-box {
             background: #1e293b;
-            padding: 6px;
-            border-radius: 12px;
+            padding: 30px;
+            border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
-        .tab-btn {
-            background: transparent;
+        .ad-box h3 {
+            color: #38bdf8;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .ad-box p {
             color: #94a3b8;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .tab-btn.active {
-            background: linear-gradient(135deg, #0284c7, #6366f1);
-            color: #ffffff;
-            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
         }
 
         /* Game Display Box */
@@ -135,63 +150,21 @@
             background: #1e293b;
         }
 
-        /* Memory Match Grid */
-        .memory-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            width: 320px;
-            margin-bottom: 20px;
-        }
-
-        .card {
-            background: #0f172a;
-            height: 70px;
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.8rem;
-            cursor: pointer;
-            user-select: none;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.2s;
-        }
-
-        .card.flipped {
-            background: #334155;
-        }
-
-        /* Common Button */
+        /* Button */
         .action-btn {
             background: linear-gradient(135deg, #0284c7, #6366f1);
             color: #ffffff;
             border: none;
-            padding: 10px 24px;
+            padding: 12px 24px;
             border-radius: 8px;
             font-weight: 600;
             cursor: pointer;
             transition: opacity 0.2s;
+            font-size: 1rem;
         }
 
         .action-btn:hover {
             opacity: 0.9;
-        }
-
-        /* Dedicated Ad Container Slots */
-        .ad-container {
-            width: 100%;
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px dashed rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
-            min-height: 90px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 10px 0;
-            text-align: center;
-            color: #64748b;
-            font-size: 0.8rem;
         }
 
         /* Footer Credit */
@@ -209,50 +182,36 @@
     <!-- Header Section -->
     <header>
         <h1>🎮 Rohan Gaming Zone</h1>
-        <p>Interactive Mini Games Dashboard</p>
+        <p>You (X) vs Computer (O)</p>
     </header>
 
     <div class="main-container">
         
-        <!-- Top Ad Placement Container -->
-        <div class="ad-container" id="ad-slot-top">
-            <!-- Ad Network Banners will automatically adjust here -->
-            <span>Sponsored Ad Slot</span>
-        </div>
-
-        <!-- Game Navigation Tabs -->
-        <div class="game-tabs">
-            <button class="tab-btn active" onclick="switchGame('ticTacToe')">Tic-Tac-Toe</button>
-            <button class="tab-btn" onclick="switchGame('memoryMatch')">Memory Match</button>
-        </div>
-
-        <!-- Tic Tac Toe Game Box -->
-        <div class="game-box" id="ticTacToeGame">
-            <div class="status-text" id="ticStatus">Turn: Player X</div>
-            <div class="tic-grid">
-                <div class="cell" onclick="makeMove(0)"></div>
-                <div class="cell" onclick="makeMove(1)"></div>
-                <div class="cell" onclick="makeMove(2)"></div>
-                <div class="cell" onclick="makeMove(3)"></div>
-                <div class="cell" onclick="makeMove(4)"></div>
-                <div class="cell" onclick="makeMove(5)"></div>
-                <div class="cell" onclick="makeMove(6)"></div>
-                <div class="cell" onclick="makeMove(7)"></div>
-                <div class="cell" onclick="makeMove(8)"></div>
+        <!-- Ad Gate Overlay (Game starts only after watching/interacting with the ad) -->
+        <div id="adGateModal">
+            <div class="ad-box">
+                <h3>📺 Sponsored Advertisement</h3>
+                <p>Game khelne ke liye pehle niche diye gaye Ad link par click karein, phir wapas aakar <b>"Start Game"</b> dabayein!</p>
+                <a href="https://afders.org/1/673f83c2f8b777bfed9d8707e0d9bfac" target="_blank" onclick="unlockGame()" style="display: block; margin-bottom: 15px; color: #38bdf8; text-decoration: underline; font-weight: bold;">👉 Yahan Click Karke Ad Dekhein</a>
+                <button class="action-btn" id="startBtn" onclick="startGame()" style="opacity: 0.5; pointer-events: none;" title="Pehle ad par click karein">Start Game (Ad Dekhne ke Baad Khulega)</button>
             </div>
-            <button class="action-btn" onclick="resetTicTacToe()">Restart Game</button>
         </div>
 
-        <!-- Memory Match Game Box -->
-        <div class="game-box" id="memoryMatchGame" style="display: none;">
-            <div class="status-text" id="memoryStatus">Matches: 0 / 6</div>
-            <div class="memory-grid" id="memoryGrid"></div>
-            <button class="action-btn" onclick="resetMemoryMatch()">Restart Match</button>
-        </div>
-
-        <!-- Bottom Ad Placement Container -->
-        <div class="ad-container" id="ad-slot-bottom">
-            <span>Sponsored Ad Slot</span>
+        <!-- Tic Tac Toe vs Computer -->
+        <div class="game-box">
+            <div class="status-text" id="ticStatus">Aapki Chal (Player X)</div>
+            <div class="tic-grid">
+                <div class="cell" onclick="userMove(0)"></div>
+                <div class="cell" onclick="userMove(1)"></div>
+                <div class="cell" onclick="userMove(2)"></div>
+                <div class="cell" onclick="userMove(3)"></div>
+                <div class="cell" onclick="userMove(4)"></div>
+                <div class="cell" onclick="userMove(5)"></div>
+                <div class="cell" onclick="userMove(6)"></div>
+                <div class="cell" onclick="userMove(7)"></div>
+                <div class="cell" onclick="userMove(8)"></div>
+            </div>
+            <button class="action-btn" onclick="resetGame()">Restart Game</button>
         </div>
 
     </div>
@@ -262,26 +221,9 @@
         Created by Rohan Rana (Anna)
     </footer>
 
-    <!-- Game Scripts -->
     <script>
-        // Tab Switcher
-        function switchGame(gameType) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            if (gameType === 'ticTacToe') {
-                document.getElementById('ticTacToeGame').style.display = 'flex';
-                document.getElementById('memoryMatchGame').style.display = 'none';
-                event.target.classList.add('active');
-            } else {
-                document.getElementById('ticTacToeGame').style.display = 'none';
-                document.getElementById('memoryMatchGame').style.display = 'flex';
-                event.target.classList.add('active');
-            }
-        }
-
-        /* ---------------- Tic Tac Toe Logic ---------------- */
         let board = ['', '', '', '', '', '', '', '', ''];
-        let currentPlayer = 'X';
-        let isGameActive = true;
+        let isGameActive = false; // Initially locked until ad is viewed
 
         const winningConditions = [
             [0, 1, 2], [3, 4, 5], [6, 7, 8],
@@ -289,41 +231,99 @@
             [0, 4, 8], [2, 4, 6]
         ];
 
-        function makeMove(index) {
-            if (board[index] !== '' || !isGameActive) return;
-
-            board[index] = currentPlayer;
-            const cells = document.querySelectorAll('.cell');
-            cells[index].innerText = currentPlayer;
-            cells[index].style.color = currentPlayer === 'X' ? '#38bdf8' : '#818cf8';
-
-            checkTicWinner();
+        // Ad Click unlock logic
+        function unlockGame() {
+            const btn = document.getElementById('startBtn');
+            btn.style.opacity = '1';
+            btn.style.pointerEvents = 'auto';
+            btn.innerText = "Start Game Now!";
         }
 
-        function checkTicWinner() {
-            let roundWon = false;
-            for (let condition of winningConditions) {
-                let a = board[condition[0]];
-                let b = board[condition[1]];
-                let c = board[condition[2]];
+        function startGame() {
+            document.getElementById('adGateModal').style.display = 'none';
+            isGameActive = true;
+        }
 
-                if (a === '' || b === '' || c === '') continue;
+        // Player Move
+        function userMove(index) {
+            if (!isGameActive || board[index] !== '') return;
 
-                if (a === b && b === c) {
-                    roundWon = true;
-                    break;
-                }
-            }
+            board[index] = 'X';
+            updateGrid();
 
-            if (roundWon) {
-                document.getElementById('ticStatus').innerText = `🎉 Player ${currentPlayer} Wins!`;
+            if (checkWinner('X')) {
+                document.getElementById('ticStatus').innerText = "🎉 Aap Jeet Gaye!";
                 isGameActive = false;
                 return;
             }
 
             if (!board.includes('')) {
-                document.getElementById('ticStatus').innerText = "🤝 It's a Draw!";
+                document.getElementById('ticStatus').innerText = "🤝 Match Draw Ho Gaya!";
                 isGameActive = false;
+                return;
+            }
+
+            // Computer Move
+            document.getElementById('ticStatus').innerText = "Computer Soch Raha Hai...";
+            isGameActive = false;
+
+            setTimeout(() => {
+                computerMove();
+            }, 500);
+        }
+
+        // Computer AI Logic
+        function computerMove() {
+            let emptyIndices = [];
+            board.forEach((val, idx) => {
+                if (val === '') emptyIndices.push(idx);
+            });
+
+            if (emptyIndices.length > 0) {
+                let randomIndex = emptyIndices[Math.floor(Math.random() * emptyIndices.length)];
+                board[randomIndex] = 'O';
+                updateGrid();
+
+                if (checkWinner('O')) {
+                    document.getElementById('ticStatus').innerText = "💻 Computer Jeet Gaya!";
+                    isGameActive = false;
+                    return;
+                }
+
+                if (!board.includes('')) {
+                    document.getElementById('ticStatus').innerText = "🤝 Match Draw Ho Gaya!";
+                    isGameActive = false;
+                    return;
+                }
+
+                document.getElementById('ticStatus').innerText = "Aapki Chal (Player X)";
+                isGameActive = true;
+            }
+        }
+
+        function updateGrid() {
+            const cells = document.querySelectorAll('.cell');
+            cells.forEach((cell, index) => {
+                cell.innerText = board[index];
+                cell.style.color = board[index] === 'X' ? '#38bdf8' : '#818cf8';
+            });
+        }
+
+        function checkWinner(player) {
+            return winningConditions.some(condition => {
+                return condition.every(index => board[index] === player);
+            });
+        }
+
+        function resetGame() {
+            board = ['', '', '', '', '', '', '', '', ''];
+            isGameActive = true;
+            document.getElementById('ticStatus').innerText = "Aapki Chal (Player X)";
+            updateGrid();
+        }
+    </script>
+</body>
+</html>ameActive = false;
                 return;
             }
 
