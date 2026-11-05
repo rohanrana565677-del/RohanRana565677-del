@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hard Brain Puzzle & Cash Rewards | Rohan Gaming Zone</title>
 
-    <!-- Propeller & Ad Network Scripts -->
+    <!-- Ad Network Scripts -->
     <script data-cfasync="false" src="https://bicea.org/14/79956d038d4c29f51dec7d393a3334e7"></script>
     <script data-cfasync="false" src="https://afders.org/1/673f83c2f8b777bfed9d8707e0d9bfac"></script>
     <script async="async" data-cfasync="false" src="https://bicea.org/21/2703db80831d2633275d1513ccd71abb"></script>
@@ -106,8 +106,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 70px;
+            min-height: 80px;
             overflow: hidden;
+            text-align: center;
         }
 
         .game-card {
@@ -258,7 +259,7 @@
 
     <div class="main-container">
 
-        <!-- Top Ad Container (Iframe Ad Script) -->
+        <!-- Top Ad Container Slot -->
         <div class="ad-container-slot">
             <script>
               atOptions = {
@@ -280,7 +281,7 @@
             <button class="action-btn" onclick="shufflePuzzle()">Shuffle / Naya Game</button>
         </div>
 
-        <!-- Bottom Ad Container -->
+        <!-- Bottom Ad Container Slot -->
         <div class="ad-container-slot">
             <div id="container-2703db80831d2633275d1513ccd71abb"></div>
         </div>
@@ -333,10 +334,10 @@
             const row = Math.floor(emptyIdx / 3);
             const col = emptyIdx % 3;
 
-            if (row > 0) neighbors.push(emptyIdx - 3); // Up
-            if (row < 2) neighbors.push(emptyIdx + 3); // Down
-            if (col > 0) neighbors.push(emptyIdx - 1); // Left
-            if (col < 2) neighbors.push(emptyIdx + 1); // Right
+            if (row > 0) neighbors.push(emptyIdx - 3);
+            if (row < 2) neighbors.push(emptyIdx + 3);
+            if (col > 0) neighbors.push(emptyIdx - 1);
+            if (col < 2) neighbors.push(emptyIdx + 1);
 
             return neighbors;
         }
@@ -372,7 +373,6 @@
             }
         }
 
-        // Guaranteed Solvable Shuffle Logic
         function shufflePuzzle() {
             moveCount = 0;
             puzzleState = [1, 2, 3, 4, 5, 6, 7, 8, ''];
@@ -401,7 +401,6 @@
             document.getElementById('withdrawModal').style.display = 'none';
         }
 
-        // Initialize Game
         shufflePuzzle();
         updateWalletDisplay();
     </script>
