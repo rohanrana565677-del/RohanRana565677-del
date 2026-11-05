@@ -230,4 +230,176 @@
         <div class="game-box" id="ticTacToeGame">
             <div class="status-text" id="ticStatus">Turn: Player X</div>
             <div class="tic-grid">
-                <div class="cell" onclick="
+                <div class="cell" onclick="makeMove(0)"></div>
+                <div class="cell" onclick="makeMove(1)"></div>
+                <div class="cell" onclick="makeMove(2)"></div>
+                <div class="cell" onclick="makeMove(3)"></div>
+                <div class="cell" onclick="makeMove(4)"></div>
+                <div class="cell" onclick="makeMove(5)"></div>
+                <div class="cell" onclick="makeMove(6)"></div>
+                <div class="cell" onclick="makeMove(7)"></div>
+                <div class="cell" onclick="makeMove(8)"></div>
+            </div>
+            <button class="action-btn" onclick="resetTicTacToe()">Restart Game</button>
+        </div>
+
+        <!-- Memory Match Game Box -->
+        <div class="game-box" id="memoryMatchGame" style="display: none;">
+            <div class="status-text" id="memoryStatus">Matches: 0 / 6</div>
+            <div class="memory-grid" id="memoryGrid"></div>
+            <button class="action-btn" onclick="resetMemoryMatch()">Restart Match</button>
+        </div>
+
+        <!-- Bottom Ad Placement Container -->
+        <div class="ad-container" id="ad-slot-bottom">
+            <span>Sponsored Ad Slot</span>
+        </div>
+
+    </div>
+
+    <!-- Footer Branding -->
+    <footer>
+        Created by Rohan Rana (Anna)
+    </footer>
+
+    <!-- Game Scripts -->
+    <script>
+        // Tab Switcher
+        function switchGame(gameType) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            if (gameType === 'ticTacToe') {
+                document.getElementById('ticTacToeGame').style.display = 'flex';
+                document.getElementById('memoryMatchGame').style.display = 'none';
+                event.target.classList.add('active');
+            } else {
+                document.getElementById('ticTacToeGame').style.display = 'none';
+                document.getElementById('memoryMatchGame').style.display = 'flex';
+                event.target.classList.add('active');
+            }
+        }
+
+        /* ---------------- Tic Tac Toe Logic ---------------- */
+        let board = ['', '', '', '', '', '', '', '', ''];
+        let currentPlayer = 'X';
+        let isGameActive = true;
+
+        const winningConditions = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],
+            [0, 4, 8], [2, 4, 6]
+        ];
+
+        function makeMove(index) {
+            if (board[index] !== '' || !isGameActive) return;
+
+            board[index] = currentPlayer;
+            const cells = document.querySelectorAll('.cell');
+            cells[index].innerText = currentPlayer;
+            cells[index].style.color = currentPlayer === 'X' ? '#38bdf8' : '#818cf8';
+
+            checkTicWinner();
+        }
+
+        function checkTicWinner() {
+            let roundWon = false;
+            for (let condition of winningConditions) {
+                let a = board[condition[0]];
+                let b = board[condition[1]];
+                let c = board[condition[2]];
+
+                if (a === '' || b === '' || c === '') continue;
+
+                if (a === b && b === c) {
+                    roundWon = true;
+                    break;
+                }
+            }
+
+            if (roundWon) {
+                document.getElementById('ticStatus').innerText = `🎉 Player ${currentPlayer} Wins!`;
+                isGameActive = false;
+                return;
+            }
+
+            if (!board.includes('')) {
+                document.getElementById('ticStatus').innerText = "🤝 It's a Draw!";
+                isGameActive = false;
+                return;
+            }
+
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            document.getElementById('ticStatus').innerText = `Turn: Player ${currentPlayer}`;
+        }
+
+        function resetTicTacToe() {
+            board = ['', '', '', '', '', '', '', '', ''];
+            currentPlayer = 'X';
+            isGameActive = true;
+            document.getElementById('ticStatus').innerText = "Turn: Player X";
+            document.querySelectorAll('.cell').forEach(cell => cell.innerText = '');
+        }
+
+        /* ---------------- Memory Match Logic ---------------- */
+        const emojis = ['🎮', '🎲', '🧩', '🎯', '👾', '🕹️'];
+        let memoryCards = [...emojis, ...emojis];
+        let flippedCards = [];
+        let matchedCount = 0;
+
+        function shuffle(array) {
+            return array.sort(() => Math.random() - 0.5);
+        }
+
+        function initMemoryGame() {
+            const grid = document.getElementById('memoryGrid');
+            grid.innerHTML = '';
+            flippedCards = [];
+            matchedCount = 0;
+            document.getElementById('memoryStatus').innerText = "Matches: 0 / 6";
+
+            const shuffled = shuffle([...memoryCards]);
+            shuffled.forEach((emoji, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.dataset.emoji = emoji;
+                card.onclick = () => flipCard(card);
+                grid.appendChild(card);
+            });
+        }
+
+        function flipCard(card) {
+            if (flippedCards.length === 2 || card.classList.contains('flipped')) return;
+
+            card.classList.add('flipped');
+            card.innerText = card.dataset.emoji;
+            flippedCards.push(card);
+
+            if (flippedCards.length === 2) {
+                const [c1, c2] = flippedCards;
+                if (c1.dataset.emoji === c2.dataset.emoji) {
+                    matchedCount++;
+                    flippedCards = [];
+                    document.getElementById('memoryStatus').innerText = `Matches: ${matchedCount} / 6`;
+                    if (matchedCount === 6) {
+                        document.getElementById('memoryStatus').innerText = "🎉 Game Completed!";
+                    }
+                } else {
+                    setTimeout(() => {
+                        c1.classList.remove('flipped');
+                        c2.classList.remove('flipped');
+                        c1.innerText = '';
+                        c2.innerText = '';
+                        flippedCards = [];
+                    }, 800);
+                }
+            }
+        }
+
+        function resetMemoryMatch() {
+            initMemoryGame();
+        }
+
+        // Initialize Memory Match on Load
+        initMemoryGame();
+    </script>
+</body>
+</html>
