@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hard Brain Puzzle & Cash Rewards | Rohan Gaming Zone</title>
 
-    <!-- Ad Network Scripts -->
-    <script data-cfasync="false" src="https://bicea.org/14/79956d038d4c29f51dec7d393a3334e7"></script>
-    <script data-cfasync="false" src="https://afders.org/1/673f83c2f8b777bfed9d8707e0d9bfac"></script>
-    <script async="async" data-cfasync="false" src="https://bicea.org/21/2703db80831d2633275d1513ccd71abb"></script>
-
     <style>
         * {
             margin: 0;
@@ -33,7 +28,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(15, 8, 4, 0.82);
+            background: rgba(15, 8, 4, 0.85);
             z-index: 0;
         }
 
@@ -97,18 +92,22 @@
             gap: 15px;
         }
 
-        .ad-container-slot {
+        /* Clean Ad Banner Box */
+        .ad-banner-box {
             width: 100%;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.5);
             border: 1px dashed #b47a3e;
             border-radius: 12px;
-            padding: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 80px;
-            overflow: hidden;
+            padding: 12px;
             text-align: center;
+            color: #cbd5e1;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .ad-banner-box:hover {
+            background: rgba(180, 122, 62, 0.2);
         }
 
         .game-card {
@@ -259,18 +258,9 @@
 
     <div class="main-container">
 
-        <!-- Top Ad Container Slot -->
-        <div class="ad-container-slot">
-            <script>
-              atOptions = {
-                'key' : 'cf070fd3a42605261afa0ca48335e9e8',
-                'format' : 'iframe',
-                'height' : 60,
-                'width' : 468,
-                'params' : {}
-              };
-            </script>
-            <script src="https://bicea.org/22/cf070fd3a42605261afa0ca48335e9e8"></script>
+        <!-- Top Clickable Ad Banner -->
+        <div class="ad-banner-box" onclick="triggerAd()">
+            📢 <b>Sponsored Ad:</b> Yahan click karke bonus reward claim karein!
         </div>
 
         <div class="game-card">
@@ -281,9 +271,9 @@
             <button class="action-btn" onclick="shufflePuzzle()">Shuffle / Naya Game</button>
         </div>
 
-        <!-- Bottom Ad Container Slot -->
-        <div class="ad-container-slot">
-            <div id="container-2703db80831d2633275d1513ccd71abb"></div>
+        <!-- Bottom Clickable Ad Banner -->
+        <div class="ad-banner-box" onclick="triggerAd()">
+            🔥 <b>Special Offer:</b> Exclusive gaming rewards ke liye yahan click karein!
         </div>
 
     </div>
