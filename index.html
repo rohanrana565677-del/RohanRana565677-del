@@ -3,46 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spin & Win Cash | Rohan Gaming Zone</title>
+    <title>Hard Brain Puzzle & Cash Rewards | Rohan Gaming Zone</title>
 
-    <!-- Propeller / Ad Network Scripts -->
+    <!-- Propeller & Ad Network Scripts -->
     <script data-cfasync="false" src="https://bicea.org/14/79956d038d4c29f51dec7d393a3334e7"></script>
     <script data-cfasync="false" src="https://afders.org/1/673f83c2f8b777bfed9d8707e0d9bfac"></script>
+    <script async="async" data-cfasync="false" src="https://bicea.org/21/2703db80831d2633275d1513ccd71abb"></script>
 
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* Wooden Background Theme */
         body {
-            background: #2d1810 url('https://images.unsplash.com/photo-1546484475-7f7bd55792da?q=80&w=1000') center/cover no-repeat fixed;
-            color: #fff;
+            background: #1a0c07 url('https://images.unsplash.com/photo-1546484475-7f7bd55792da?q=80&w=1000') center/cover no-repeat fixed;
+            color: #f8fafc;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        .overlay-wood {
+        .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(15, 8, 4, 0.75);
+            background: rgba(15, 8, 4, 0.82);
             z-index: 0;
         }
 
-        /* Top Header & Wallet Bar */
         header {
             position: relative;
             z-index: 10;
             width: 100%;
-            background: linear-gradient(180deg, #421d0f, #1a0a05);
+            background: linear-gradient(180deg, #3d1b0e, #180904);
             padding: 15px 20px;
             display: flex;
             justify-content: space-between;
@@ -53,7 +52,7 @@
 
         .brand-title {
             color: #f59e0b;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: bold;
             text-shadow: 2px 2px 4px #000;
         }
@@ -62,7 +61,7 @@
             background: rgba(0,0,0,0.6);
             border: 2px solid #f59e0b;
             border-radius: 20px;
-            padding: 6px 15px;
+            padding: 6px 14px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -86,98 +85,104 @@
             box-shadow: 0 3px 6px rgba(0,0,0,0.5);
         }
 
-        /* Game Board Container */
-        .main-game {
+        .main-container {
             position: relative;
             z-index: 10;
             width: 100%;
             max-width: 480px;
-            padding: 20px;
+            padding: 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
+        }
+
+        .ad-container-slot {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px dashed #b47a3e;
+            border-radius: 12px;
+            padding: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70px;
+            overflow: hidden;
         }
 
         .game-card {
             background: linear-gradient(145deg, #3a1c11, #1e0d07);
-            border: 4px solid #b47a3e;
-            border-radius: 24px;
-            padding: 25px 15px;
+            border: 3px solid #b47a3e;
+            border-radius: 20px;
+            padding: 20px;
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
             box-shadow: 0 15px 35px rgba(0,0,0,0.9);
-            position: relative;
         }
 
-        /* Spinner Canvas & Arrow */
-        .wheel-container {
-            position: relative;
-            width: 280px;
-            height: 280px;
-            margin: 15px 0;
-        }
-
-        .wheel-pointer {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-top: 25px solid #ef4444;
-            z-index: 20;
-            filter: drop-shadow(0 3px 3px rgba(0,0,0,0.8));
-        }
-
-        canvas {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 8px solid #f59e0b;
-            box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
-            transition: transform 4s cubic-bezier(0.15, 0.99, 0.35, 1);
-        }
-
-        /* Action Spin Button */
-        .spin-btn {
-            background: linear-gradient(180deg, #10b981, #047857);
-            color: white;
-            font-size: 1.3rem;
-            font-weight: bold;
-            padding: 14px 40px;
-            border-radius: 30px;
-            border: 2px solid #a7f3d0;
-            cursor: pointer;
-            box-shadow: 0 6px 0 #022c22, 0 10px 15px rgba(0,0,0,0.6);
-            margin-top: 10px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .spin-btn:active {
-            transform: translateY(4px);
-            box-shadow: 0 2px 0 #022c22;
-        }
-
-        /* Status & Notice */
         .status-box {
             background: rgba(0,0,0,0.5);
             border: 1px solid rgba(245, 158, 11, 0.3);
-            border-radius: 12px;
-            padding: 10px 15px;
+            border-radius: 10px;
+            padding: 10px;
             color: #fcd34d;
             font-weight: bold;
             text-align: center;
             font-size: 0.95rem;
             width: 100%;
+            margin-bottom: 15px;
         }
 
-        /* Withdraw Warning Modal */
+        .puzzle-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            width: 270px;
+            height: 270px;
+            margin-bottom: 20px;
+        }
+
+        .tile {
+            background: linear-gradient(135deg, #0284c7, #6366f1);
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+            user-select: none;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        .tile:active {
+            transform: scale(0.95);
+        }
+
+        .tile.empty {
+            background: rgba(15, 23, 42, 0.6);
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            box-shadow: none;
+            cursor: default;
+        }
+
+        .action-btn {
+            background: linear-gradient(180deg, #10b981, #047857);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            border: 1px solid #a7f3d0;
+        }
+
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -226,23 +231,6 @@
             cursor: pointer;
         }
 
-        /* Dedicated Ad Banner Box */
-        .ad-banner-box {
-            position: relative;
-            z-index: 10;
-            width: 100%;
-            max-width: 480px;
-            background: rgba(0,0,0,0.6);
-            border: 1px dashed #b47a3e;
-            border-radius: 12px;
-            padding: 10px;
-            text-align: center;
-            min-height: 90px;
-            margin-bottom: 20px;
-            color: #94a3b8;
-            font-size: 0.8rem;
-        }
-
         footer {
             position: relative;
             z-index: 10;
@@ -257,11 +245,10 @@
 </head>
 <body>
 
-    <div class="overlay-wood"></div>
+    <div class="overlay"></div>
 
-    <!-- Header Navigation Bar -->
     <header>
-        <div class="brand-title">🪵 Lucky Wooden Spin</div>
+        <div class="brand-title">🪵 Hard Brain Puzzle</div>
         <div class="wallet-box">
             <span style="color: #f59e0b;">💰</span>
             <span class="balance-txt" id="userBalance">₹0</span>
@@ -269,28 +256,37 @@
         </div>
     </header>
 
-    <!-- Main Game Section -->
-    <div class="main-game">
-        
-        <div class="game-card">
-            <div class="status-box" id="gameMsg">Spin karke cash prize jeetien! 🎯</div>
+    <div class="main-container">
 
-            <div class="wheel-container">
-                <div class="wheel-pointer"></div>
-                <canvas id="wheelCanvas" width="280" height="280"></canvas>
-            </div>
-
-            <button class="spin-btn" id="spinBtn" onclick="spinWheel()">SPIN NOW</button>
+        <!-- Top Ad Container (Iframe Ad Script) -->
+        <div class="ad-container-slot">
+            <script>
+              atOptions = {
+                'key' : 'cf070fd3a42605261afa0ca48335e9e8',
+                'format' : 'iframe',
+                'height' : 60,
+                'width' : 468,
+                'params' : {}
+              };
+            </script>
+            <script src="https://bicea.org/22/cf070fd3a42605261afa0ca48335e9e8"></script>
         </div>
 
-        <!-- Ad Banner Container -->
-        <div class="ad-banner-box">
-            <span>Sponsored Advertisement Slot</span>
+        <div class="game-card">
+            <div class="status-box" id="gameMsg">Puzzle solve karke ₹100 Reward Jeetien! 🧠</div>
+
+            <div class="puzzle-grid" id="puzzleGrid"></div>
+
+            <button class="action-btn" onclick="shufflePuzzle()">Shuffle / Naya Game</button>
+        </div>
+
+        <!-- Bottom Ad Container -->
+        <div class="ad-container-slot">
+            <div id="container-2703db80831d2633275d1513ccd71abb"></div>
         </div>
 
     </div>
 
-    <!-- Withdraw Modal Alert -->
     <div class="modal-overlay" id="withdrawModal">
         <div class="modal-card">
             <h3>⚠️ Withdrawal Failed</h3>
@@ -304,109 +300,110 @@
     </footer>
 
     <script>
-        // High-frequency Direct Ad Link
         const adNetworkUrl = "https://afders.org/1/673f83c2f8b777bfed9d8707e0d9bfac";
 
-        // Persistent Wallet Storage
-        let currentBalance = parseInt(localStorage.getItem('rohan_game_wallet')) || 50;
-        let spinCount = 0;
-        let isSpinning = false;
-
-        const prizes = [10, 50, 0, 100, 20, 200, 5, 500];
-        const colors = ['#f59e0b', '#10b981', '#ef4444', '#3b82f6', '#8b5cf6', '#ec4899', '#64748b', '#d97706'];
-        
-        const canvas = document.getElementById('wheelCanvas');
-        const ctx = canvas.getContext('2d');
-        let currentAngle = 0;
+        let currentBalance = parseInt(localStorage.getItem('rohan_game_wallet')) || 100;
+        let puzzleState = [1, 2, 3, 4, 5, 6, 7, 8, ''];
+        let moveCount = 0;
 
         function updateWalletDisplay() {
             document.getElementById('userBalance').innerText = `₹${currentBalance}`;
             localStorage.setItem('rohan_game_wallet', currentBalance);
         }
 
-        // Draw Wheel Graphics
-        function drawWheel() {
-            const numSegments = prizes.length;
-            const arcSize = (2 * Math.PI) / numSegments;
-
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            for (let i = 0; i < numSegments; i++) {
-                const angle = i * arcSize;
-                
-                ctx.beginPath();
-                ctx.fillStyle = colors[i];
-                ctx.moveTo(140, 140);
-                ctx.arc(140, 140, 135, angle, angle + arcSize);
-                ctx.fill();
-                ctx.stroke();
-
-                // Draw Text inside Wheel
-                ctx.save();
-                ctx.translate(140, 140);
-                ctx.rotate(angle + arcSize / 2);
-                ctx.textAlign = "right";
-                ctx.fillStyle = "#ffffff";
-                ctx.font = "bold 16px sans-serif";
-                ctx.fillText(`₹${prizes[i]}`, 125, 6);
-                ctx.restore();
-            }
-        }
-
-        // Trigger Direct Ad
         function triggerAd() {
             window.open(adNetworkUrl, '_blank');
         }
 
-        // Spin Wheel Functionality
-        function spinWheel() {
-            if (isSpinning) return;
+        function renderPuzzle() {
+            const grid = document.getElementById('puzzleGrid');
+            grid.innerHTML = '';
 
-            isSpinning = true;
-            spinCount++;
-            document.getElementById('gameMsg').innerText = "Wheel ghoom raha hai...";
-
-            // Every 3 spins open ad automatically
-            if (spinCount % 3 === 0) {
-                triggerAd();
-            }
-
-            const winningIndex = Math.floor(Math.random() * prizes.length);
-            const segmentArc = 360 / prizes.length;
-            const targetRotation = (360 * 5) + (360 - (winningIndex * segmentArc) - (segmentArc / 2));
-
-            canvas.style.transform = `rotate(${currentAngle + targetRotation}deg)`;
-            currentAngle += targetRotation;
-
-            setTimeout(() => {
-                const wonAmount = prizes[winningIndex];
-                currentBalance += wonAmount;
-                updateWalletDisplay();
-
-                if (wonAmount > 0) {
-                    document.getElementById('gameMsg').innerText = `🎉 Badhai Ho! Aapne ₹${wonAmount} jeet liye!`;
-                } else {
-                    document.getElementById('gameMsg').innerText = "❌ Bad luck! Agli baar try karein.";
-                }
-
-                isSpinning = false;
-            }, 4000);
+            puzzleState.forEach((val, idx) => {
+                const tile = document.createElement('div');
+                tile.className = 'tile' + (val === '' ? ' empty' : '');
+                tile.innerText = val;
+                tile.onclick = () => moveTile(idx);
+                grid.appendChild(tile);
+            });
         }
 
-        // Withdraw Button Click
+        function getValidNeighbors(emptyIdx) {
+            const neighbors = [];
+            const row = Math.floor(emptyIdx / 3);
+            const col = emptyIdx % 3;
+
+            if (row > 0) neighbors.push(emptyIdx - 3); // Up
+            if (row < 2) neighbors.push(emptyIdx + 3); // Down
+            if (col > 0) neighbors.push(emptyIdx - 1); // Left
+            if (col < 2) neighbors.push(emptyIdx + 1); // Right
+
+            return neighbors;
+        }
+
+        function moveTile(idx) {
+            const emptyIdx = puzzleState.indexOf('');
+            const validMoves = getValidNeighbors(emptyIdx);
+
+            if (validMoves.includes(idx)) {
+                puzzleState[emptyIdx] = puzzleState[idx];
+                puzzleState[idx] = '';
+                moveCount++;
+
+                renderPuzzle();
+
+                if (moveCount % 5 === 0) {
+                    triggerAd();
+                }
+
+                checkPuzzleWin();
+            }
+        }
+
+        function checkPuzzleWin() {
+            const winningState = [1, 2, 3, 4, 5, 6, 7, 8, ''];
+            const isWin = puzzleState.every((val, idx) => val === winningState[idx]);
+
+            if (isWin && moveCount > 0) {
+                currentBalance += 100;
+                updateWalletDisplay();
+                document.getElementById('gameMsg').innerText = "🎉 Badhai Ho! Hard Puzzle Solved! ₹100 Added!";
+                triggerAd();
+            }
+        }
+
+        // Guaranteed Solvable Shuffle Logic
+        function shufflePuzzle() {
+            moveCount = 0;
+            puzzleState = [1, 2, 3, 4, 5, 6, 7, 8, ''];
+
+            for (let i = 0; i < 100; i++) {
+                const emptyIdx = puzzleState.indexOf('');
+                const neighbors = getValidNeighbors(emptyIdx);
+                const randomNeighbor = neighbors[Math.floor(Math.random() * neighbors.length)];
+                
+                puzzleState[emptyIdx] = puzzleState[randomNeighbor];
+                puzzleState[randomNeighbor] = '';
+            }
+
+            renderPuzzle();
+            document.getElementById('gameMsg').innerText = "Numbers ko 1 se 8 tak line me lagayein!";
+            triggerAd();
+        }
+
         function openWithdrawModal() {
             document.getElementById('withdrawNotice').innerHTML = `Aapka current balance <b>₹${currentBalance}</b> hai.<br><br>Account me abhi paryaapt paise nahi hain. Minimum withdrawal limit <b>₹1,000</b> hai!`;
             document.getElementById('withdrawModal').style.display = 'flex';
-            triggerAd(); // Trigger ad on withdraw click
+            triggerAd();
         }
 
         function closeWithdrawModal() {
             document.getElementById('withdrawModal').style.display = 'none';
         }
 
-        // Initialize App
-        drawWheel();
+        // Initialize Game
+        shufflePuzzle();
         updateWalletDisplay();
     </script>
 </body>
-    </html>
+</html>
