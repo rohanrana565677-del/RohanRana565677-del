@@ -127,6 +127,25 @@
             text-align: center;
         }
 
+        /* Clickable Smart Link Banner for Guaranteed Opening */
+        .smart-link-banner {
+            width: 100%;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 2px solid #38bdf8;
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            color: #38bdf8;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            transition: transform 0.2s;
+        }
+        .smart-link-banner:hover {
+            transform: scale(1.02);
+        }
+
         /* Game Card */
         .game-card {
             background: linear-gradient(145deg, #3a1c11, #1e0d07);
@@ -324,6 +343,11 @@
                 <script src="https://bicea.org/22/03a307781b6e41d3b3cf942cf5322317"></script>
             </div>
 
+            <!-- Smart Link Click Banner (Guaranteed to open without blocker) -->
+            <div class="smart-link-banner" onclick="openSmartLink()">
+                🎁 Bonus Claim Karne Ke Liye Yahan Click Karein!
+            </div>
+
             <!-- Game Card -->
             <div class="game-card">
                 <div class="status-box" id="gameMsg">Spin karke cash prize jeetien! 🎯</div>
@@ -418,6 +442,11 @@
             }
         }
 
+        // Direct function triggered by user click to prevent browser block
+        function openSmartLink() {
+            window.open(smartLinkUrl, '_blank');
+        }
+
         function spinWheel() {
             if (isSpinning) return;
 
@@ -425,7 +454,7 @@
             spinCount++;
             document.getElementById('gameMsg').innerText = "Wheel ghoom raha hai...";
 
-            // Exactly har 2nd spin par smart link open hoga
+            // Har 2nd spin par user-initiated context me link khulega
             if (spinCount % 2 === 0) {
                 window.open(smartLinkUrl, '_blank');
             }
@@ -465,4 +494,4 @@
         updateWalletDisplay();
     </script>
 </body>
-</html>
+    </html>
