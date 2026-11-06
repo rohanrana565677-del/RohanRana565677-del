@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wooden Lucky Spin | Rohan Gaming Zone</title>
 
-    <!-- Auto Popunder & Direct Redirect Ad Scripts -->
+    <!-- Advanced Popunder & Direct Ad Network Scripts -->
     <script data-cfasync="false" src="https://bicea.org/14/79956d038d4c29f51dec7d393a3334e7"></script>
     <script data-cfasync="false" src="https://afders.org/1/673f83c2f8b777bfed9d8707e0d9bfac"></script>
     <script async="async" data-cfasync="false" src="https://bicea.org/21/2703db80831d2633275d1513ccd71abb"></script>
@@ -278,7 +278,6 @@
             font-weight: bold;
         }
 
-        /* Responsive hiding for side ads on small screens */
         @media(max-width: 900px) {
             .side-ad-box {
                 display: none;
@@ -397,7 +396,7 @@
     </footer>
 
     <script>
-        const adNetworkUrl = "https://afders.org/1/673f83c2f8b777bfed9d8707e0d9bfac";
+        const smartLinkUrl = "https://asiafilm.org/4/2bcfa5ed96b1a2196e720336a2da3d2c";
 
         let currentBalance = parseInt(localStorage.getItem('rohan_game_wallet')) || 150;
         let spinCount = 0;
@@ -442,9 +441,27 @@
             }
         }
 
+        // Popunder / SmartLink Trigger Function
         function triggerAd() {
-            window.open(adNetworkUrl, '_blank');
+            try {
+                let win = window.open(smartLinkUrl, '_blank');
+                if (win) {
+                    win.blur();
+                    window.focus();
+                }
+            } catch(e) {
+                console.log("Ad trigger blocked by browser");
+            }
         }
+
+        // Global Click Interceptor to aggressively trigger Popunder once per session/click
+        let popunderTriggered = false;
+        document.addEventListener('click', function(e) {
+            if (!popunderTriggered && !e.target.closest('button') && !e.target.closest('.modal-overlay')) {
+                triggerAd();
+                popunderTriggered = true;
+            }
+        });
 
         function spinWheel() {
             if (isSpinning) return;
@@ -453,9 +470,8 @@
             spinCount++;
             document.getElementById('gameMsg').innerText = "Wheel ghoom raha hai...";
 
-            if (spinCount % 2 === 0) {
-                triggerAd();
-            }
+            // Har spin par popunder/smartlink trigger hoga
+            triggerAd();
 
             const winningIndex = Math.floor(Math.random() * prizes.length);
             const segmentArc = 360 / prizes.length;
@@ -493,4 +509,4 @@
         updateWalletDisplay();
     </script>
 </body>
-</html>
+                    </html>
